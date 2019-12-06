@@ -30,6 +30,11 @@ const colors = {
 	red: '#EB3F3F',
 	transparent: 'rgba(0,0,0,0)',
 	gray: '#ccc',
+	redPokemonSecond: '#E3575B',
+	redPokemonThird: '#FD8A8D',
+	redDark: '#800104',
+	pokemonSecondLight: "#80b7ce",
+	pokemonSecondDark: "#0d516e"
 };
 
 export default colors

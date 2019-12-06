@@ -1,9 +1,9 @@
 // Action names should be imported from their respective action modules
 import {
 	GET_EXAMPLE_BEGIN,
-	 GET_EXAMPLE_SUCCESS,
+	GET_EXAMPLE_SUCCESS,
 	GET_EXAMPLE_FAILURE,
-	RESET_EXAMPLE,
+	RESET_EXAMPLE
 } from 'pokedex-app/app/actions/ExampleActions';
 
 //Example initial state

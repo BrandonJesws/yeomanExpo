@@ -66,7 +66,29 @@ const ApplicationStyles = {
 		bottomViewHeight: {
 			height: 64
 			//height 64 + 16margin
-		}
+		},
+		cardPokemon: {
+        	height: 100,
+			marginVertical: Metrics.tinyMargin,
+			padding: Metrics.smallMargin,
+			backgroundColor: Colors.pokemonSecondLight,
+			shadowColor: '#000',
+			shadowRadius: 4,
+			shadowOpacity: 0.2,
+			shadowOffset: { width: 0, height: 3 },
+			elevation: 1,
+			borderRadius: 2,
+		},
+		bold: {
+			fontWeight: 'bold',
+		},
+		capital: {
+			textTransform: 'capitalize',
+		},
+		info: {
+			fontSize: 18,
+			marginLeft: 15,
+		},
 	},
 	margins: {
 		tinyVerticalMargin: {

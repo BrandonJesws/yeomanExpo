@@ -1,32 +1,25 @@
 // Action names should be imported from their respective action modules
 import {
-	SET_POKEMON,
-	GET_POKEMON_FAILURE,
-	GET_POKEMON_SUCCESS,
+	GET_POKEMONS_FAILURE,
+	GET_POKEMONS_SUCCESS
 } from 'pokedex-app/app/actions/PokemonActions';
 
 //Example initial state
 const initialState = {
-	id: 1,
-	pokemon: {},
+	pokemons: {},
 	error: '',
 	
 };
 
 // Return a new state object with updated attributes
-export default function PokemonReducer (state = initialState, action) {
+export default function PokemonsReducer (state = initialState, action) {
 	switch (action.type) {
-		case SET_POKEMON:
+		case GET_POKEMONS_SUCCESS:
 			return {
 				...state,
-				id: action.payload
-			} 
-		case GET_POKEMON_SUCCESS:
-				return {
-				...state,
-				pokemon: action.payload
+				pokemons: action.payload
 			}
-		case GET_POKEMON_FAILURE:
+		case GET_POKEMONS_FAILURE:
 			return {
 				...state,
 				error: action.payload

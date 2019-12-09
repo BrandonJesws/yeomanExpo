@@ -1,26 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { useDispatch, useSelector } from "react-redux";
 import ListPokemons from 'pokedex-app/app/components/ListPokemons';
 import Loading from 'pokedex-app/app/components/Loading';
-import Api from 'pokedex-app/app/services/ApiService';
+import { getPokemons } from 'pokedex-app/app/actions/PokemonActions';
 
 export default function WelcomeScreen(props) {
-
+  const dispatch = useDispatch();
   const { navigation } = props;
-  const [pokemons, setPokemons] = useState(null)
- 
+  const pokemons = useSelector(state => state.Pokemons.pokemons.data);
+
   useEffect(() => {
 	  //params ( offset, limit)
-	  Api.getPokemons(0, 151)
-	  	.then(result => {
-		const pokemons = result.results.map((pokemon) => {
-      	const urlSplited = pokemon.url.split("/");
-	    const id = urlSplited[urlSplited.length - 2];
-	    const sprite = {uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`};
-      	return {...pokemon, id, sprite }
-      })
-    setPokemons(pokemons)
-    })
+	  dispatch(getPokemons(0, 151));
   }, [])
 
     return (

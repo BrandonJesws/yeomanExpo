@@ -1,37 +1,20 @@
 import React, { 
-	useEffect, 
-	useState 
+	useEffect 
 } from 'react';
-import { Text, View, Image, ActivityIndicator } from 'react-native';
-import { useSelector } from "react-redux";
-import ApiService from 'pokedex-app/app/services/ApiService';
+import { View } from 'react-native';
+import { useDispatch, useSelector } from "react-redux";
 import DetailPokemon from 'pokedex-app/app/components/DetailPokemon';
 import Loading from 'pokedex-app/app/components/Loading';
-
+import { getPokemon } from 'pokedex-app/app/actions/PokemonActions';
 import styles from './DetailPokemonScreenStyle';
 
 export default function DetailPokemonScreen (props) {
-
+	const dispatch = useDispatch();
 	const pokemonid = useSelector(state => state.Pokemon.id);
-	const [pokemonData, setPokemonData] = useState(null);
+	const pokemonData = useSelector(state => state.Pokemon.pokemon.data);
 
 	useEffect(()=>{
-        ApiService.getPokemon(pokemonid)
-            .then(data => {
-			    const pokemonDetail = {
-                    id: data.id,
-				    ability: data.abilities[0].ability.name,
-				    type: data.types[0].type.name,
-				    speed: data.stats[0].base_stat,
-				    specialDefense: data.stats[1].base_stat,
-				    specialAttack: data.stats[2].base_stat,
-				    defense: data.stats[3].base_stat,
-				    attack: data.stats[4].base_stat,
-				    hp: data.stats[5].base_stat,
-				    sprite: {uri: data.sprites.front_default}
-			    }
-			setPokemonData(pokemonDetail);
-	    })
+		dispatch(getPokemon(pokemonid));
 	}, [pokemonid]);
 
 	return (

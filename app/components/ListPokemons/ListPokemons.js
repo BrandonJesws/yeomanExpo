@@ -29,9 +29,9 @@ export default function ListPokemons ({data, navigation}) {
 }
 
 
-ListPokemons.propTypes = {
-	data: PropTypes.array
-}
+// ListPokemons.propTypes = {
+// 	data: PropTypes.array
+// }
 
 ListPokemons.defaultProps = {
 	// data: []
